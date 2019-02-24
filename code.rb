@@ -16,25 +16,22 @@ def polybius(text)
     5 => ["E", "K", "P", "U", "Z"]
    }
   
-  array = text.scan(/./)
+  text_array = text.scan(/./).delete(" ")
   #=> ["c", "o", "d", "e", "w", "a", "r", "s"]
   
-  answer = []
-  array.each do |letter|
-    row_hash.each do |row, vals|
-      if vals.include?(letter)
-        answer<< row
-      end
+  row_coords = []
+  text_array.each do |letter|
+    row_hash.each do |row, rvals|
+      row_coords<< row if rvals.include?(letter)
     end
   end
   
-   array.each do |letter|
-    col_hash.each do |col, vals|
-      if vals.include?(letter)
-        answer<< col
-      end
+  col_coords = []
+  text_array.each do |letter|
+    col_hash.each do |col, cvals|
+      col_coords<< col if cvals.include?(letter
     end
   end
+  (row_coords.zip col_coords).flatten
+end.join
   
-  answer.join
-end
