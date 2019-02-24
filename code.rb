@@ -29,9 +29,9 @@ def polybius(text)
   col_coords = []
   text_array.each do |letter|
     col_hash.each do |col, cvals|
-      col_coords<< col if cvals.include?(letter
+      col_coords<< col if cvals.include?(letter)
     end
   end
-  (row_coords.zip col_coords).flatten
-end.join
+  (row_coords.zip col_coords).flatten.join
+end
   
