@@ -5,7 +5,8 @@ def polybius(text)
     2 => ["F", "G", "H", "I", "J", "K"],
     3 => ["L", "M", "N", "O", "P"],
     4 => ["Q", "R", "S", "T", "U"],
-    5 => ["V", "W", "X", "Y", "Z"]
+    5 => ["V", "W", "X", "Y", "Z"],
+    6 => [" "]
     }
     
   col_hash = {
@@ -13,11 +14,12 @@ def polybius(text)
     2 => ["B", "G", "M", "R", "W"],
     3 => ["C", "H", "N", "S", "X"],
     4 => ["D", "I", "J", "O", "T", "Y"],
-    5 => ["E", "K", "P", "U", "Z"]
+    5 => ["E", "K", "P", "U", "Z"],
+    6 => [" "]
    }
   
-  text_array = text.scan(/./).delete(" ")
-  #=> ["c", "o", "d", "e", "w", "a", "r", "s"]
+  text_array = text.upcase.scan(/./)
+  #=> "hello there" => ["H", "E", "L", "L", "O", "", "T", "H", "E", "R", "E"]
   
   row_coords = []
   text_array.each do |letter|
@@ -32,6 +34,7 @@ def polybius(text)
       col_coords<< col if cvals.include?(letter)
     end
   end
-  (row_coords.zip col_coords).flatten.join
+  answer = (row_coords.zip col_coords).flatten.join
+  answer.gsub("66"," ")
 end
   
